@@ -1,10 +1,10 @@
 from prefect import flow, task
-from services.logger import configure_logging
+from src.services.logger import configure_logging
 
-logger = configure_logging("app.log")
 
 @task
 def do_job():
+    logger = configure_logging("app.log")
     logger.info("Running Script A")
 
 @flow
