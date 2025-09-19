@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Prefect local state
+.prefect/
+.prefectignore
+
+# Secrets / Tokens
+*.pem
+*.key
+*.crt
+*.pub
+*.token
+*.secret
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
