@@ -1,0 +1,13 @@
+[Unit]
+Description=Prefect Worker
+After=network.target
+
+[Service]
+User=ap
+WorkingDirectory=/home/ap
+Environment="PREFECT_API_URL=https://automate.prod-5088.healthupgroup.com/api"
+ExecStart=/home/ap/prefect/flow/bin/prefect worker start --pool ap-pool
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

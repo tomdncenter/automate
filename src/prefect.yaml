@@ -1,0 +1,26 @@
+name: hug-automate-project
+prefect-version: 2.14.10
+
+build:
+  - prefect.deployments.steps.git_clone:
+      repository: "git@github.com:tomdncenter/automate.git"
+      branch: "main"
+      directory: "src/flows"   # ตำแหน่งไฟล์ flow.py
+
+push: []
+
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: "git@github.com:tomdncenter/automate.git"
+      branch: "main"
+      directory: "src/flows"
+
+deployments:
+  - name: test-flow-deployment
+    entrypoint: "src/flows/flow_test.py:flow_test"  # ไฟล์และชื่อฟังก์ชัน flow
+    work_pool:
+      name: ap-pool
+      work_queue_name: default
+    schedule: "*/2 * * * *"  # รันทุกชั่วโมง
+    time_zone: "Asia/Bangkok"
+    tags: ["daily", "report"]
